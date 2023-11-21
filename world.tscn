@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cqyiqky55pl48"]
+[gd_scene load_steps=22 format=3 uid="uid://cqyiqky55pl48"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_vvcev"]
 [ext_resource type="PackedScene" uid="uid://ix6u6ttqnt3x" path="res://wall.tscn" id="1_wo72d"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Door.gd" id="7_7f45s"]
 [ext_resource type="PackedScene" uid="uid://cx7hbw0rqr567" path="res://Items/Key/key.tscn" id="8_0bfxo"]
 [ext_resource type="Material" uid="uid://deej64htn4ggl" path="res://Items/Key/KeyMaterial.tres" id="11_h6yd7"]
+[ext_resource type="PackedScene" uid="uid://qnaviu2ddti1" path="res://Items/CardboardBox/cardboard_box.tscn" id="12_2m44s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6insv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -58,14 +59,20 @@ metadata/_edit_lock_ = true
 [node name="Wall" parent="Structures" instance=ExtResource("1_wo72d")]
 transform = Transform3D(1.57915, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75605, 2.4405)
 
+[node name="Wall2" parent="Structures" instance=ExtResource("1_wo72d")]
+transform = Transform3D(1.57915, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75605, -9.66074)
+
 [node name="floor" parent="Structures" instance=ExtResource("1_wo72d")]
-transform = Transform3D(6.24087, 0, 0, 0, -4.0623e-07, -1, 0, 9.29345, -4.37114e-08, -0.0409526, -0.348222, -5.28604)
+transform = Transform3D(1.53325, 0, 0, 0, -4.0623e-07, -1, 0, 9.29345, -4.37114e-08, -0.0409526, -0.348222, -5.28604)
 
 [node name="floor2" parent="Structures" instance=ExtResource("1_wo72d")]
-transform = Transform3D(6.24087, 0, 0, 0, -4.0623e-07, -1, 0, 9.29345, -4.37114e-08, -0.0409526, 3.79948, -5.28604)
+transform = Transform3D(6.24087, 0, 0, 0, -1.11234e-07, -1, 0, 2.54472, -4.37114e-08, -0.0409526, 3.2664, 1.71845)
+
+[node name="floor3" parent="Structures" instance=ExtResource("1_wo72d")]
+transform = Transform3D(6.24087, 0, 0, 0, -1.11234e-07, -1, 0, 2.54472, -4.37114e-08, -0.0409526, 3.27018, -14.0353)
 
 [node name="Wall3" parent="Structures" instance=ExtResource("1_wo72d")]
-transform = Transform3D(-2.11538e-07, 0, -1, 0, 1, 0, 4.83942, 0, -4.37114e-08, -3.6745, 1.79373, -7.88723)
+transform = Transform3D(-2.11538e-07, 0, -1, 0, 1, 0, 4.83942, 0, -4.37114e-08, -3.6745, 1.25615, -7.88723)
 
 [node name="Wall4" parent="Structures" instance=ExtResource("1_wo72d")]
 transform = Transform3D(1.10049, 0, 0, 0, 1, 0, 0, 0, 1, 1.05451, 1.75605, -2.81172)
@@ -77,16 +84,17 @@ transform = Transform3D(1.10049, 0, 0, 0, 0.470776, 0, 0, 0, 1, -1.79182, 2.748,
 transform = Transform3D(0.245907, 0, 0, 0, 1, 0, 0, 0, 1, -2.92904, 1.75605, -2.81172)
 
 [node name="Wall5" parent="Structures" instance=ExtResource("1_wo72d")]
-transform = Transform3D(-2.11538e-07, 0, -1, 0, 1, 0, 4.83942, 0, -4.37114e-08, 3.38877, 1.79373, -7.2975)
+transform = Transform3D(-2.11538e-07, 0, -1, 0, 1, 0, 4.83942, 0, -4.37114e-08, 3.38877, 1.09403, -7.2975)
 
 [node name="Lights" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Room2" type="StaticBody3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.27957, 1.17248, -5.04855)
 script = ExtResource("3_8cq8w")
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights/Room2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.94002, 1.13107, -2.31055)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.94002, 0.280699, -1.58045)
 light_energy = 3.335
 light_indirect_energy = 3.365
 omni_range = 9.284
@@ -101,11 +109,12 @@ texture_filter = 1
 texture = ExtResource("4_2qbqm")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.494451, 3.10723, -0.59892)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.494451, 1.92054, -0.59892)
 light_energy = 2.42
 omni_range = 9.284
 
 [node name="Decor" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Decor"]
 transform = Transform3D(0.23147, 0, 0, 0, 0.23147, 0, 0, 0, 0.23147, 0.145638, 1.81674, -2.45487)
@@ -131,27 +140,42 @@ shaded = true
 texture_filter = 1
 texture = ExtResource("6_ywanh")
 
-[node name="Player" parent="." instance=ExtResource("2_7hrpx")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.57599, 1.08017, 0.0635985)
+[node name="Puzzles" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
-[node name="Door" type="CharacterBody3D" parent="."]
+[node name="Door" type="CharacterBody3D" parent="Puzzles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49391, 0.935161, -2.61641)
 script = ExtResource("7_7f45s")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.616305, 0, 0)
 shape = SubResource("BoxShape3D_2g5cn")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzles/Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.616, 0, 0)
 mesh = SubResource("BoxMesh_rx3f6")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Door"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Puzzles/Door"]
 transform = Transform3D(0.119971, 0, 0, 0, 0.119971, 0, 0, 0, 0.119971, 0.924295, -0.184128, 0.233047)
 mesh = SubResource("BoxMesh_a8psw")
 
-[node name="Key" parent="." instance=ExtResource("8_0bfxo")]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2.22744, 0.843393, 1.24936)
+[node name="Key" parent="Puzzles" instance=ExtResource("8_0bfxo")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2.14101, 0.843393, 1.24936)
+
+[node name="Boxes" type="Node3D" parent="Puzzles"]
+metadata/_edit_lock_ = true
+
+[node name="CardboardBox" parent="Puzzles/Boxes" instance=ExtResource("12_2m44s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.570685, 0.583592, -8.3165)
+
+[node name="CardboardBox2" parent="Puzzles/Boxes" instance=ExtResource("12_2m44s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46727, 0.583593, -8.25042)
+
+[node name="CardboardBox3" parent="Puzzles/Boxes" instance=ExtResource("12_2m44s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06968, 0.583594, -8.2989)
+
+[node name="Player" parent="." instance=ExtResource("2_7hrpx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.57599, 1.04219, 0.0635985)
 
 [connection signal="input_event" from="Lights/Room2" to="Lights/Room2" method="_on_input_event"]

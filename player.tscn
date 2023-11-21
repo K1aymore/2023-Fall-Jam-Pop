@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Player.gd" id="1_5xbm4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w8ucq"]
-size = Vector3(0.5, 1, 0.5)
+size = Vector3(0.5, 1.20875, 0.5)
 
 [sub_resource type="Environment" id="Environment_5esoe"]
 background_mode = 1
@@ -12,7 +12,7 @@ background_mode = 1
 script = ExtResource("1_5xbm4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.364647, -0.155556)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.443413, -0.155556)
 shape = SubResource("BoxShape3D_w8ucq")
 
 [node name="PerspectiveCam" type="Camera3D" parent="."]

@@ -43,6 +43,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("switch"):
 		switchModes()
 	
+	
+	velocity.y -= 5 * delta
+	
+	if Input.is_action_just_pressed("jump") && is_on_floor():
+		velocity.y = 4
+	
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
