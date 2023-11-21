@@ -12,7 +12,7 @@ background_mode = 1
 script = ExtResource("1_5xbm4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.364647, -0.22138)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.364647, -0.155556)
 shape = SubResource("BoxShape3D_w8ucq")
 
 [node name="PerspectiveCam" type="Camera3D" parent="."]

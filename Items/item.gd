@@ -24,16 +24,21 @@ func _physics_process(delta: float) -> void:
 		velocity.y = newPos.y - global_position.y
 		
 		if playerRot == 0:
-			newPos.x = (get_viewport().get_mouse_position().x / 350) - 3
+			newPos.x = (get_viewport().get_mouse_position().x / 350) - 2.75
 			velocity.x = newPos.x - global_position.x + player.global_position.x
 		
-		elif playerRot == 90:
+		if playerRot == 90:
 			newPos.z = -(get_viewport().get_mouse_position().x / 350) + 3
 			velocity.z = newPos.z - global_position.z + player.global_position.z
 		
-		elif playerRot == -90:
+		if playerRot == -90:
 			newPos.z = (get_viewport().get_mouse_position().x / 350) - 3
 			velocity.z = newPos.z - global_position.z + player.global_position.z
+		
+		if playerRot == -180:
+			newPos.x = -(get_viewport().get_mouse_position().x / 350) + 3
+			print(newPos.x)
+			velocity.x = newPos.x - global_position.x + player.global_position.x
 		
 		
 		velocity *= 5

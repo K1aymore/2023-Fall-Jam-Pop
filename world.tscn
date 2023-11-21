@@ -21,8 +21,6 @@ background_mode = 1
 sky = SubResource("Sky_7kfpg")
 tonemap_mode = 2
 ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2g5cn"]
