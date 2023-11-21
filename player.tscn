@@ -20,7 +20,7 @@ shape = SubResource("BoxShape3D_w8ucq")
 [node name="ClickerOrthoCam" type="Camera3D" parent="."]
 projection = 1
 current = true
-size = 3.0
+size = 4.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." groups=["Ortho"]]
 texture_filter = 1
@@ -47,6 +47,6 @@ environment = SubResource("Environment_5esoe")
 projection = 1
 current = true
 fov = 69.0
-size = 3.0
+size = 4.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
