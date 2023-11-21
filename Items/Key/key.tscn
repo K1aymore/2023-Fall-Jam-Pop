@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx7hbw0rqr567"]
+
+[ext_resource type="Script" path="res://Items/item.gd" id="1_6coxg"]
+[ext_resource type="PackedScene" uid="uid://doer1aw4d11cf" path="res://Items/Key/key.glb" id="1_bx1bq"]
+[ext_resource type="Material" uid="uid://deej64htn4ggl" path="res://Items/Key/KeyMaterial.tres" id="2_sljhp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_33w2v"]
+size = Vector3(0.865542, 0.0818399, 0.33078)
+
+[node name="Key" instance=ExtResource("1_bx1bq")]
+script = ExtResource("1_6coxg")
+
+[node name="Cube_004" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_sljhp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.256355, 0, 0)
+shape = SubResource("BoxShape3D_33w2v")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://ix6u6ttqnt3x" path="res://wall.tscn" id="1_wo72d"]
 [ext_resource type="PackedScene" uid="uid://5dxmm616pkju" path="res://player.tscn" id="2_7hrpx"]
 [ext_resource type="Texture2D" uid="uid://c2sh5nw8pe1qd" path="res://Assets/10-hilarious-posters-inspired-by-animals-4.jpg" id="3_swcsi"]
-[ext_resource type="PackedScene" uid="uid://bjrqtjneodl0k" path="res://Items/key.tscn" id="4_fgsce"]
 [ext_resource type="Texture2D" uid="uid://4gqef40j3x0r" path="res://Assets/smosh-the-movie-poster-6.jpg" id="4_l0rqo"]
 [ext_resource type="Texture2D" uid="uid://c2t0plat00jjs" path="res://Assets/20-funniest-movies-8.jpg" id="5_0gf1j"]
 [ext_resource type="Script" path="res://Door.gd" id="7_7f45s"]
+[ext_resource type="PackedScene" uid="uid://cx7hbw0rqr567" path="res://Items/Key/key.tscn" id="8_0bfxo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6insv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -84,7 +84,7 @@ transform = Transform3D(2.18691e-08, 0, -0.166769, 0, 0.166769, 0, 0.166769, 0, 
 texture = ExtResource("5_0gf1j")
 
 [node name="Player" parent="." instance=ExtResource("2_7hrpx")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.57599, 0.89884, -0.559707)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.57599, 1.08017, -0.559707)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.494451, 3.10723, -0.59892)
@@ -98,9 +98,6 @@ light_energy = 2.12
 light_indirect_energy = 3.365
 omni_range = 9.284
 
-[node name="Key" parent="." instance=ExtResource("4_fgsce")]
-transform = Transform3D(-9.57279e-09, 0.219, -9.57279e-09, 0, -9.57279e-09, -0.219, -0.219, -9.57279e-09, 4.1844e-16, -1.91826, 0.663084, 1.47737)
-
 [node name="Door" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49391, 0.935161, -2.8027)
 script = ExtResource("7_7f45s")
@@ -113,3 +110,6 @@ shape = SubResource("BoxShape3D_2g5cn")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.616, 0, 0)
 mesh = SubResource("BoxMesh_rx3f6")
+
+[node name="Key" parent="." instance=ExtResource("8_0bfxo")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2.22744, 0.843393, 1.24936)

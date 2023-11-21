@@ -10,14 +10,14 @@ func _physics_process(delta: float) -> void:
 		dragging = false
 		print("bye")
 	
+	
+	
 	if dragging:
 		var player : Player = get_tree().get_first_node_in_group("Player")
 		var playerRot : int = snapped(player.rotation_degrees.y, 90)
 		
 		var newPos := Vector3.ZERO
 		var distToPlayer := (player.global_position - global_position).abs()
-		
-		velocity = Vector3.ZERO
 		
 		
 		newPos.y = player.global_position.y-(get_viewport().get_mouse_position().y / 350) + 1.5
@@ -37,18 +37,22 @@ func _physics_process(delta: float) -> void:
 		
 		
 		velocity *= 5
-		result = move_and_collide(velocity * delta)
 		
 	
 	
 	
 	if !dragging:
-		velocity.y -= delta * 5
-		result = move_and_collide(velocity * delta)
+		velocity.y -= delta * 3
+		pass
 	
 	
-	if result != null && result.get_collider().has_method("collide"):
-		result.get_collider().collide(self)
+	result = move_and_collide(velocity * delta)
+	if result != null:
+		if result.get_collider().has_method("collide"):
+			result.get_collider().collide(self)
+		
+		if result.get_collider().name.contains("floor"):
+			velocity = Vector3.ZERO
 
 
 
