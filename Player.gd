@@ -67,12 +67,14 @@ func setState(mode):
 	match mode:
 		PERSPECTIVE:
 			$PerspectiveCam.current = true
+			$ClickerOrthoCam.current = false
 			%OrthoCam.current = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			get_parent().setPerspective()
 			state = PERSPECTIVE
 		ORTHO:
-			$PerspectiveCam.current = true
+			$PerspectiveCam.current = false
+			$ClickerOrthoCam.current = true
 			%OrthoCam.current = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			get_parent().setOrtho()

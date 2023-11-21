@@ -17,6 +17,11 @@ shape = SubResource("BoxShape3D_w8ucq")
 
 [node name="PerspectiveCam" type="Camera3D" parent="."]
 
+[node name="ClickerOrthoCam" type="Camera3D" parent="."]
+projection = 1
+current = true
+size = 3.0
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." groups=["Ortho"]]
 texture_filter = 1
 anchors_preset = 15
