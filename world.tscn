@@ -24,9 +24,8 @@ sky_material = SubResource("ProceduralSkyMaterial_6insv")
 [sub_resource type="Environment" id="Environment_hyx3s"]
 background_mode = 1
 sky = SubResource("Sky_7kfpg")
-ambient_light_source = 2
-ambient_light_color = Color(0.34902, 0.34902, 0.34902, 1)
 tonemap_mode = 2
+ssao_intensity = 16.75
 sdfgi_read_sky_light = false
 glow_enabled = true
 
@@ -34,14 +33,14 @@ glow_enabled = true
 size = Vector3(0.164071, 0.591183, 0.681018)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2g5cn"]
-size = Vector3(1, 2, 0.5)
+size = Vector3(1, 2, 0.25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lgn4"]
 albedo_color = Color(0.188235, 0.145098, 0.0980392, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rx3f6"]
 material = SubResource("StandardMaterial3D_8lgn4")
-size = Vector3(1, 2, 0.5)
+size = Vector3(1, 2, 0.25)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a8psw"]
 material = ExtResource("11_h6yd7")
@@ -57,10 +56,10 @@ environment = SubResource("Environment_hyx3s")
 metadata/_edit_lock_ = true
 
 [node name="Wall" parent="Structures" instance=ExtResource("1_wo72d")]
-transform = Transform3D(1.57915, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75605, 2.4405)
+transform = Transform3D(1.57915, 0, 0, 0, 3.15294, 0, 0, 0, 1, 0, 3.49432, 2.4405)
 
 [node name="Wall2" parent="Structures" instance=ExtResource("1_wo72d")]
-transform = Transform3D(1.57915, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75605, -9.66074)
+transform = Transform3D(1.57915, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55814, -9.66074)
 
 [node name="floor" parent="Structures" instance=ExtResource("1_wo72d")]
 transform = Transform3D(1.53325, 0, 0, 0, -4.0623e-07, -1, 0, 9.29345, -4.37114e-08, -0.0409526, -0.348222, -5.28604)
@@ -72,19 +71,19 @@ transform = Transform3D(6.24087, 0, 0, 0, -1.11234e-07, -1, 0, 2.54472, -4.37114
 transform = Transform3D(6.24087, 0, 0, 0, -1.11234e-07, -1, 0, 2.54472, -4.37114e-08, -0.0409526, 3.27018, -14.0353)
 
 [node name="Wall3" parent="Structures" instance=ExtResource("1_wo72d")]
-transform = Transform3D(-2.11538e-07, 0, -1, 0, 1, 0, 4.83942, 0, -4.37114e-08, -3.6745, 1.25615, -7.88723)
+transform = Transform3D(-2.11538e-07, 0, -1, 0, 2.94212, 0, 4.83942, 0, -4.37114e-08, -3.6745, 3.90049, -7.88723)
 
 [node name="Wall4" parent="Structures" instance=ExtResource("1_wo72d")]
-transform = Transform3D(1.10049, 0, 0, 0, 1, 0, 0, 0, 1, 1.05451, 1.75605, -2.81172)
+transform = Transform3D(1.10049, 0, 0, 0, 1, 0, 0, 0, 1, 1.05451, 1.70306, -2.81172)
 
 [node name="Wall7" parent="Structures" instance=ExtResource("1_wo72d")]
-transform = Transform3D(1.10049, 0, 0, 0, 0.470776, 0, 0, 0, 1, -1.79182, 2.748, -2.81172)
+transform = Transform3D(1.10049, 0, 0, 0, 0.455534, 0, 0, 0, 1, -1.79182, 2.748, -2.81172)
 
 [node name="Wall6" parent="Structures" instance=ExtResource("1_wo72d")]
 transform = Transform3D(0.245907, 0, 0, 0, 1, 0, 0, 0, 1, -2.92904, 1.75605, -2.81172)
 
 [node name="Wall5" parent="Structures" instance=ExtResource("1_wo72d")]
-transform = Transform3D(-2.11538e-07, 0, -1, 0, 1, 0, 4.83942, 0, -4.37114e-08, 3.38877, 1.09403, -7.2975)
+transform = Transform3D(-2.11538e-07, 0, -1, 0, 3.25848, 0, 4.83942, 0, -4.37114e-08, 3.38877, 3.30391, -7.2975)
 
 [node name="Lights" type="Node3D" parent="."]
 metadata/_edit_lock_ = true
@@ -94,16 +93,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.27957, 1.17248, -5.04855)
 script = ExtResource("3_8cq8w")
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights/Room2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.94002, 0.280699, -1.58045)
-light_energy = 3.335
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.94002, 7.34527, -1.58045)
+light_energy = 7.57
 light_indirect_energy = 3.365
-omni_range = 9.284
+shadow_enabled = true
+omni_range = 12.004
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lights/Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9397)
 shape = SubResource("BoxShape3D_t5g8x")
 
 [node name="Sprite3D" type="Sprite3D" parent="Lights/Room2"]
-transform = Transform3D(-5.46392e-09, 0, 0.125, 0, 0.125, 0, -0.125, 0, -5.46392e-09, 0, 0, 0)
+transform = Transform3D(-5.46392e-09, 0, 0.125, 0, 0.125, 0, -0.125, 0, -5.46392e-09, 0, 0, -0.897503)
 shaded = true
 texture_filter = 1
 texture = ExtResource("4_2qbqm")
@@ -111,6 +112,7 @@ texture = ExtResource("4_2qbqm")
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.494451, 1.92054, -0.59892)
 light_energy = 2.42
+shadow_enabled = true
 omni_range = 9.284
 
 [node name="Decor" type="Node3D" parent="."]
@@ -144,7 +146,7 @@ texture = ExtResource("6_ywanh")
 metadata/_edit_lock_ = true
 
 [node name="Door" type="CharacterBody3D" parent="Puzzles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49391, 0.935161, -2.61641)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49391, 0.935161, -2.50563)
 script = ExtResource("7_7f45s")
 metadata/_edit_group_ = true
 
@@ -157,7 +159,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.616, 0, 0)
 mesh = SubResource("BoxMesh_rx3f6")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Puzzles/Door"]
-transform = Transform3D(0.119971, 0, 0, 0, 0.119971, 0, 0, 0, 0.119971, 0.924295, -0.184128, 0.233047)
+transform = Transform3D(0.119971, 0, 0, 0, 0.119971, 0, 0, 0, 0.119971, 0.924295, -0.184128, 0.146975)
 mesh = SubResource("BoxMesh_a8psw")
 
 [node name="Key" parent="Puzzles" instance=ExtResource("8_0bfxo")]
@@ -171,6 +173,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.570685, 0.583592, -8.3165)
 
 [node name="CardboardBox2" parent="Puzzles/Boxes" instance=ExtResource("12_2m44s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46727, 0.583593, -8.25042)
+
+[node name="CardboardBox4" parent="Puzzles/Boxes" instance=ExtResource("12_2m44s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14536, 4.41003, 0.900723)
 
 [node name="CardboardBox3" parent="Puzzles/Boxes" instance=ExtResource("12_2m44s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06968, 0.583594, -8.2989)
