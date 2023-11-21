@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqyiqky55pl48"]
+[gd_scene load_steps=15 format=3 uid="uid://cqyiqky55pl48"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_fpby7"]
 [ext_resource type="Script" path="res://world.gd" id="1_vvcev"]
 [ext_resource type="PackedScene" uid="uid://ix6u6ttqnt3x" path="res://wall.tscn" id="1_wo72d"]
+[ext_resource type="PackedScene" uid="uid://5dxmm616pkju" path="res://player.tscn" id="2_7hrpx"]
+[ext_resource type="Texture2D" uid="uid://c2sh5nw8pe1qd" path="res://Assets/10-hilarious-posters-inspired-by-animals-4.jpg" id="3_swcsi"]
+[ext_resource type="PackedScene" uid="uid://bjrqtjneodl0k" path="res://Items/key.tscn" id="4_fgsce"]
+[ext_resource type="Texture2D" uid="uid://4gqef40j3x0r" path="res://Assets/smosh-the-movie-poster-6.jpg" id="4_l0rqo"]
+[ext_resource type="Texture2D" uid="uid://c2t0plat00jjs" path="res://Assets/20-funniest-movies-8.jpg" id="5_0gf1j"]
+[ext_resource type="Script" path="res://Door.gd" id="7_7f45s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6insv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -13,58 +18,98 @@ sky_material = SubResource("ProceduralSkyMaterial_6insv")
 
 [sub_resource type="Environment" id="Environment_hyx3s"]
 background_mode = 1
-background_color = Color(0.141176, 0.141176, 0.141176, 1)
 sky = SubResource("Sky_7kfpg")
 tonemap_mode = 2
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
 glow_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_w8ucq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_2g5cn"]
+size = Vector3(1, 2, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lgn4"]
+albedo_color = Color(0.188235, 0.145098, 0.0980392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rx3f6"]
+material = SubResource("StandardMaterial3D_8lgn4")
+size = Vector3(1, 2, 0.5)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_vvcev")
+metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hyx3s")
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.928245, 0)
-script = ExtResource("1_fpby7")
+[node name="Structures" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Wall" parent="Structures" instance=ExtResource("1_wo72d")]
+transform = Transform3D(1.57915, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75605, 2.4405)
+
+[node name="floor" parent="Structures" instance=ExtResource("1_wo72d")]
+transform = Transform3D(6.24087, 0, 0, 0, -4.0623e-07, -1, 0, 9.29345, -4.37114e-08, -0.0409526, -0.348222, -5.28604)
+
+[node name="floor2" parent="Structures" instance=ExtResource("1_wo72d")]
+transform = Transform3D(6.24087, 0, 0, 0, -4.0623e-07, -1, 0, 9.29345, -4.37114e-08, -0.0409526, 3.79948, -5.28604)
+
+[node name="Wall3" parent="Structures" instance=ExtResource("1_wo72d")]
+transform = Transform3D(-2.11538e-07, 0, -1, 0, 1, 0, 4.83942, 0, -4.37114e-08, -3.6745, 1.79373, -7.2975)
+
+[node name="Wall4" parent="Structures" instance=ExtResource("1_wo72d")]
+transform = Transform3D(1.10049, 0, 0, 0, 1, 0, 0, 0, 1, 1.05451, 1.75605, -2.81172)
+
+[node name="Wall7" parent="Structures" instance=ExtResource("1_wo72d")]
+transform = Transform3D(1.10049, 0, 0, 0, 0.470776, 0, 0, 0, 1, -1.79182, 2.748, -2.81172)
+
+[node name="Wall6" parent="Structures" instance=ExtResource("1_wo72d")]
+transform = Transform3D(0.245907, 0, 0, 0, 1, 0, 0, 0, 1, -2.92904, 1.75605, -2.81172)
+
+[node name="Wall5" parent="Structures" instance=ExtResource("1_wo72d")]
+transform = Transform3D(-2.11538e-07, 0, -1, 0, 1, 0, 4.83942, 0, -4.37114e-08, 3.38877, 1.79373, -7.2975)
+
+[node name="Decor" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Decor"]
+transform = Transform3D(0.23147, 0, 0, 0, 0.23147, 0, 0, 0, 0.23147, 0.145638, 1.81674, -2.45487)
+texture = ExtResource("3_swcsi")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Decor"]
+transform = Transform3D(-0.129059, 0, -1.12827e-08, 0, 0.129059, 0, 1.12827e-08, 0, -0.129059, 0.364567, 2.0241, 2.09441)
+texture = ExtResource("4_l0rqo")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Decor"]
+transform = Transform3D(2.18691e-08, 0, -0.166769, 0, 0.166769, 0, 0.166769, 0, 2.18691e-08, 2.9985, 1.65263, -0.478162)
+texture = ExtResource("5_0gf1j")
+
+[node name="Player" parent="." instance=ExtResource("2_7hrpx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.57599, 0.89884, -0.559707)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.494451, 3.10723, -0.59892)
+light_energy = 2.12
+light_indirect_energy = 3.365
+omni_range = 9.284
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.494451, 3.10723, -10.0061)
+light_energy = 2.12
+light_indirect_energy = 3.365
+omni_range = 9.284
+
+[node name="Key" parent="." instance=ExtResource("4_fgsce")]
+transform = Transform3D(-9.57279e-09, 0.219, -9.57279e-09, 0, -9.57279e-09, -0.219, -0.219, -9.57279e-09, 4.1844e-16, -1.91826, 0.663084, 1.47737)
+
+[node name="Door" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49391, 0.935161, -2.8027)
+script = ExtResource("7_7f45s")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("BoxShape3D_w8ucq")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.616305, 0, 0)
+shape = SubResource("BoxShape3D_2g5cn")
 
-[node name="PerspectiveCam" type="Camera3D" parent="Player"]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
-omni_range = 8.954
-omni_attenuation = 0.233259
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Player" groups=["Ortho"]]
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-stretch_shrink = 5
-
-[node name="SubViewport" type="SubViewport" parent="Player/SubViewportContainer"]
-size = Vector2i(230, 129)
-
-[node name="OrthoCam" type="Camera3D" parent="Player/SubViewportContainer/SubViewport"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22153, 0)
-current = true
-fov = 69.0
-size = 3.0
-
-[node name="Wall" parent="." instance=ExtResource("1_wo72d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75605, 2.4405)
-
-[node name="Wall2" parent="." instance=ExtResource("1_wo72d")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0409526, -0.348222, 0.408008)
-
-[node name="Wall3" parent="." instance=ExtResource("1_wo72d")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.4047, 1.79373, 0.54581)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.616, 0, 0)
+mesh = SubResource("BoxMesh_rx3f6")

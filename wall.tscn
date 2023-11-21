@@ -11,7 +11,6 @@ size = Vector3(4.39, 3.73, 0.65)
 points = PackedVector3Array(2.195, 1.865, 0.325, 2.195, 1.865, -0.325, -2.195, 1.865, 0.325, 2.195, -1.865, 0.325, 2.195, -1.865, -0.325, -2.195, 1.865, -0.325, -2.195, -1.865, 0.325, -2.195, -1.865, -0.325)
 
 [node name="Wall" type="StaticBody3D"]
-metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_l4h48")

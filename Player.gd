@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 enum {
 	PERSPECTIVE,
@@ -10,12 +11,13 @@ enum {
 var state := ORTHO
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 4.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _ready():
+	setState(ORTHO)
 
 
 func _process(delta: float) -> void:
@@ -28,6 +30,11 @@ func _process(delta: float) -> void:
 	if state == ORTHO:
 		%OrthoCam.position = position
 		%OrthoCam.rotation = rotation
+	
+	if Input.is_action_just_pressed("test"):
+		pass
+	if Input.is_action_just_pressed("test2"):
+		pass
 
 
 
@@ -54,6 +61,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+
+
 func setState(mode):
 	match mode:
 		PERSPECTIVE:
@@ -61,15 +70,11 @@ func setState(mode):
 			%OrthoCam.current = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			get_parent().setPerspective()
-			get_viewport().scaling_3d_scale = 1
-			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA
 			state = PERSPECTIVE
 		ORTHO:
-			$PerspectiveCam.current = false
+			$PerspectiveCam.current = true
 			%OrthoCam.current = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			get_viewport().scaling_3d_scale = 0.1
-			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 			get_parent().setOrtho()
 			state = ORTHO
 
@@ -84,8 +89,10 @@ func switchModes():
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	
 	if state == PERSPECTIVE && event is InputEventMouseMotion:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		rotate_y(-event.relative.x * 0.004)
 		$PerspectiveCam.rotate_x(-event.relative.y * 0.004)
+		get_viewport().set_input_as_handled()
+		
+
