@@ -16,29 +16,18 @@ func _physics_process(delta: float) -> void:
 		var player : Player = get_tree().get_first_node_in_group("Player")
 		var playerRot : int = snapped(player.rotation_degrees.y, 90)
 		
-		var newPos := Vector3.ZERO
+		
 		var distToPlayer := (player.global_position - global_position).abs()
 		
+		var point = get_viewport().get_camera_3d().project_position(get_viewport().get_mouse_position(), distToPlayer.length())
 		
-		newPos.y = player.global_position.y-(get_viewport().get_mouse_position().y / 350) + 1.5
-		velocity.y = newPos.y - global_position.y
+		velocity.y = point.y - global_position.y
 		
-		if playerRot == 0:
-			newPos.x = (get_viewport().get_mouse_position().x / 350) - 2.75
-			velocity.x = newPos.x - global_position.x + player.global_position.x
 		
-		if playerRot == 90:
-			newPos.z = -(get_viewport().get_mouse_position().x / 350) + 3
-			velocity.z = newPos.z - global_position.z + player.global_position.z
-		
-		if playerRot == -90:
-			newPos.z = (get_viewport().get_mouse_position().x / 350) - 3
-			velocity.z = newPos.z - global_position.z + player.global_position.z
-		
-		if playerRot == -180:
-			newPos.x = -(get_viewport().get_mouse_position().x / 350) + 3
-			print(newPos.x)
-			velocity.x = newPos.x - global_position.x + player.global_position.x
+		if playerRot == 0 || playerRot == -180:
+			velocity.x = point.x - global_position.x
+		if playerRot == 90 || playerRot == -90:
+			velocity.z = point.z - global_position.z
 		
 		
 		velocity *= 5

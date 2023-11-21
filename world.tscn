@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqyiqky55pl48"]
+[gd_scene load_steps=21 format=3 uid="uid://cqyiqky55pl48"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_vvcev"]
 [ext_resource type="PackedScene" uid="uid://ix6u6ttqnt3x" path="res://wall.tscn" id="1_wo72d"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://wmx6joplfjf" path="res://Assets/Ikea_logo.png" id="6_ywanh"]
 [ext_resource type="Script" path="res://Door.gd" id="7_7f45s"]
 [ext_resource type="PackedScene" uid="uid://cx7hbw0rqr567" path="res://Items/Key/key.tscn" id="8_0bfxo"]
+[ext_resource type="Material" uid="uid://deej64htn4ggl" path="res://Items/Key/KeyMaterial.tres" id="11_h6yd7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6insv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -41,6 +42,9 @@ albedo_color = Color(0.188235, 0.145098, 0.0980392, 1)
 material = SubResource("StandardMaterial3D_8lgn4")
 size = Vector3(1, 2, 0.5)
 
+[sub_resource type="BoxMesh" id="BoxMesh_a8psw"]
+material = ExtResource("11_h6yd7")
+
 [node name="World" type="Node3D"]
 script = ExtResource("1_vvcev")
 metadata/_edit_lock_ = true
@@ -61,7 +65,7 @@ transform = Transform3D(6.24087, 0, 0, 0, -4.0623e-07, -1, 0, 9.29345, -4.37114e
 transform = Transform3D(6.24087, 0, 0, 0, -4.0623e-07, -1, 0, 9.29345, -4.37114e-08, -0.0409526, 3.79948, -5.28604)
 
 [node name="Wall3" parent="Structures" instance=ExtResource("1_wo72d")]
-transform = Transform3D(-2.11538e-07, 0, -1, 0, 1, 0, 4.83942, 0, -4.37114e-08, -3.6745, 1.79373, -7.2975)
+transform = Transform3D(-2.11538e-07, 0, -1, 0, 1, 0, 4.83942, 0, -4.37114e-08, -3.6745, 1.79373, -7.88723)
 
 [node name="Wall4" parent="Structures" instance=ExtResource("1_wo72d")]
 transform = Transform3D(1.10049, 0, 0, 0, 1, 0, 0, 0, 1, 1.05451, 1.75605, -2.81172)
@@ -131,7 +135,7 @@ texture = ExtResource("6_ywanh")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.57599, 1.08017, 0.0635985)
 
 [node name="Door" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49391, 0.935161, -2.8027)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49391, 0.935161, -2.61641)
 script = ExtResource("7_7f45s")
 metadata/_edit_group_ = true
 
@@ -142,6 +146,10 @@ shape = SubResource("BoxShape3D_2g5cn")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.616, 0, 0)
 mesh = SubResource("BoxMesh_rx3f6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(0.119971, 0, 0, 0, 0.119971, 0, 0, 0, 0.119971, 0.924295, -0.184128, 0.233047)
+mesh = SubResource("BoxMesh_a8psw")
 
 [node name="Key" parent="." instance=ExtResource("8_0bfxo")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -2.22744, 0.843393, 1.24936)

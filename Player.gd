@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 			setState(ORTHO)
 	
 	if state == ORTHO:
-		%OrthoCam.global_position = global_position
+		%OrthoCam.global_position = global_position.snapped(Vector3(4/108,4/108,4/108))
 		%OrthoCam.global_rotation = global_rotation
 	
 	if Input.is_action_just_pressed("test"):
