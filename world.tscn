@@ -28,6 +28,7 @@ tonemap_mode = 2
 ssao_intensity = 16.75
 sdfgi_read_sky_light = false
 glow_enabled = true
+adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5g8x"]
 size = Vector3(0.164071, 0.591183, 0.681018)

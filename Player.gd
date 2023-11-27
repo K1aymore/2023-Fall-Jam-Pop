@@ -31,6 +31,9 @@ func _process(delta: float) -> void:
 		%OrthoCam.global_position = global_position.snapped(Vector3(4/108,4/108,4/108))
 		%OrthoCam.global_rotation = global_rotation
 	
+	if state == PERSPECTIVE:
+		$PerspectiveCam.fov = lerp($PerspectiveCam.fov, 75.0, delta * 12.0)
+	
 	if Input.is_action_just_pressed("test"):
 		pass
 	if Input.is_action_just_pressed("test2"):
@@ -79,6 +82,8 @@ func setState(mode):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			get_parent().setPerspective()
 			state = PERSPECTIVE
+			
+			$PerspectiveCam.fov = 179
 		ORTHO:
 			$PerspectiveCam.current = false
 			$ClickerOrthoCam.current = true
