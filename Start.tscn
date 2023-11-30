@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://bapmtb1cvaj5p"]
+
+[ext_resource type="Theme" uid="uid://bgosmnkukb5m" path="res://new_theme.tres" id="1_rw2f4"]
+[ext_resource type="Script" path="res://Start.gd" id="2_3li26"]
+
+[sub_resource type="Gradient" id="Gradient_hgmw8"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o58hp"]
+gradient = SubResource("Gradient_hgmw8")
+height = 1080
+fill_from = Vector2(1, 1)
+
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rw2f4")
+script = ExtResource("2_3li26")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_o58hp")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -277.0
+offset_top = 89.495
+offset_right = 277.0
+offset_bottom = 278.495
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 136
+text = "Controls"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 300
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "WASD - Move"
+
+[node name="Label2" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "F - Change Perspective"
+
+[node name="Label3" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "Mouse - Drag & Look"
+
+[node name="Label4" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "Space - Jump"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.5
+offset_top = -184.13
+offset_right = 168.5
+offset_bottom = -93.1298
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 81
+text = "Wake Up"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
