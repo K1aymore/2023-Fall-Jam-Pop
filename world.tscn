@@ -111,7 +111,7 @@ texture_filter = 1
 texture = ExtResource("4_2qbqm")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.620585, 1.92054, -0.59892)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 1.921, -0.599)
 light_energy = 2.42
 shadow_enabled = true
 omni_range = 9.284

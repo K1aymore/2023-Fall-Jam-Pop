@@ -102,7 +102,7 @@ func switchModes():
 
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if state == PERSPECTIVE && event is InputEventMouseMotion:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		rotate_y(-event.relative.x * 0.004)

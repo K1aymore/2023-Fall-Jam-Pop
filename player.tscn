@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://5dxmm616pkju"]
+[gd_scene load_steps=5 format=3 uid="uid://5dxmm616pkju"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_5xbm4"]
+[ext_resource type="Script" path="res://addons/silicon.3d.anaglyph/anaglyph_camera.gd" id="3_6ke4s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w8ucq"]
 size = Vector3(0.5, 1.20875, 0.5)
@@ -16,6 +17,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.443413, -0.155556)
 shape = SubResource("BoxShape3D_w8ucq")
 
 [node name="PerspectiveCam" type="Camera3D" parent="."]
+script = ExtResource("3_6ke4s")
 
 [node name="ClickerOrthoCam" type="Camera3D" parent="."]
 projection = 1
