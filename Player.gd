@@ -47,6 +47,7 @@ func _physics_process(delta: float) -> void:
 		switchModes()
 	
 	
+	
 	velocity.y -= 13 * delta
 	
 	if Input.is_action_just_pressed("jump") && is_on_floor():
@@ -76,6 +77,7 @@ func _physics_process(delta: float) -> void:
 func setState(mode):
 	match mode:
 		PERSPECTIVE:
+			print(ProjectSettings.get_setting("rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality"))
 			$PerspectiveCam.current = true
 			$ClickerOrthoCam.current = false
 			%OrthoCam.current = false
@@ -107,6 +109,7 @@ func _input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		rotate_y(-event.relative.x * 0.004)
 		$PerspectiveCam.rotate_x(-event.relative.y * 0.004)
+		$Camera3D.rotation.x = $PerspectiveCam.rotation.x
 		get_viewport().set_input_as_handled()
 		
 

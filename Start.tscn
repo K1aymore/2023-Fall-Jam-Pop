@@ -82,6 +82,20 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 text = "Space - Jump"
 
+[node name="QualityButton" type="CheckButton" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 136.0
+offset_top = -223.0
+offset_right = 346.0
+offset_bottom = -164.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+theme_override_font_sizes/font_size = 27
+text = "High Quality"
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -98,4 +112,5 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 81
 text = "Wake Up"
 
+[connection signal="toggled" from="QualityButton" to="." method="_on_quality_button_toggled"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

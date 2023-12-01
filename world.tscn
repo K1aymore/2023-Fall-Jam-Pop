@@ -25,10 +25,8 @@ sky_material = SubResource("ProceduralSkyMaterial_6insv")
 background_mode = 1
 sky = SubResource("Sky_7kfpg")
 tonemap_mode = 2
-ssao_intensity = 16.75
 sdfgi_read_sky_light = false
 glow_enabled = true
-adjustment_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5g8x"]
 size = Vector3(0.164071, 0.591183, 0.681018)
@@ -96,7 +94,7 @@ script = ExtResource("3_8cq8w")
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights/Room2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.94002, 7.34527, -1.58045)
 light_energy = 7.57
-light_indirect_energy = 3.365
+light_bake_mode = 1
 shadow_enabled = true
 omni_range = 12.004
 
@@ -113,8 +111,9 @@ texture = ExtResource("4_2qbqm")
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 1.921, -0.599)
 light_energy = 2.42
+light_bake_mode = 1
 shadow_enabled = true
-omni_range = 9.284
+omni_range = 8.425
 
 [node name="Decor" type="Node3D" parent="."]
 metadata/_edit_lock_ = true

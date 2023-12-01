@@ -72,4 +72,8 @@ jump={
 
 [rendering]
 
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5
+anti_aliasing/quality/use_taa=true
 anti_aliasing/quality/use_debanding=true
+mesh_lod/lod_change/threshold_pixels=0.0
+lights_and_shadows/positional_shadow/atlas_16_bits=false

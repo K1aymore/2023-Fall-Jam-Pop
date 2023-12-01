@@ -2,7 +2,7 @@ extends Camera3D
 class_name AnaglyphCamera
 
 # How far apart the "eyes" are. A larger value makes a stronger anaglyph effect.
-var separation := 0.02
+var separation := 0.03
 # The distance at which rendered object appear normal. 
 var convergence := 100.0
 # How black and white the image should be.
@@ -29,6 +29,7 @@ func _process(delta: float) -> void:
 	for camera in [_anaglyph_node("Left/Camera"), _anaglyph_node("Right/Camera")]:
 		_update_camera_properties(camera)
 	
+	_viewport = get_viewport()
 	var is_current : bool = _viewport.get_camera_3d() == self
 	_anaglyph_node("Composite").visible = is_current
 	RenderingServer.viewport_set_disable_3d(_viewport.get_viewport_rid(), is_current)
@@ -74,6 +75,9 @@ func _update_camera_viewport_properties(view: Viewport, is_current: bool) -> voi
 #	view.usage = _viewport.usage
 	view.debug_draw = _viewport.debug_draw
 	view.transparent_bg = _viewport.transparent_bg
+	view.use_debanding = _viewport.use_debanding
+	view.use_taa = _viewport.use_taa
+	view.mesh_lod_threshold = _viewport.mesh_lod_threshold
 #	view.render_target_v_flip = _viewport.render_target_v_flip
 #	view.render_target_clear_mode = _viewport.render_target_clear_mode
 #	view.render_target_update_mode = _viewport.render_target_update_mode
