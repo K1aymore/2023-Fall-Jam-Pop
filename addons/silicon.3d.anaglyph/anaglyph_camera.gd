@@ -22,19 +22,19 @@ func _enter_tree() -> void:
 	add_child(_anaglyph)
 
 func _ready():
-	set_process_internal(true)
 	_viewport = get_viewport()
 
 func _process(delta: float) -> void:
-	for camera in [_anaglyph_node("Left/Camera"), _anaglyph_node("Right/Camera")]:
+	for camera in [_anaglyph_node("Left/Left/Camera"), _anaglyph_node("Right/Right/Camera")]:
 		_update_camera_properties(camera)
 	
 	_viewport = get_viewport()
 	var is_current : bool = _viewport.get_camera_3d() == self
 	_anaglyph_node("Composite").visible = is_current
 	RenderingServer.viewport_set_disable_3d(_viewport.get_viewport_rid(), is_current)
-	_update_camera_viewport_properties(_anaglyph_node("Left"), is_current)
-	_update_camera_viewport_properties(_anaglyph_node("Right"), is_current)
+	_update_camera_viewport_properties(_anaglyph_node("Left/Left"), is_current)
+	_update_camera_viewport_properties(_anaglyph_node("Right/Right"), is_current)
+	
 
 
 
@@ -67,7 +67,7 @@ func set_half_res(value: float) -> void:
 
 
 func _update_camera_viewport_properties(view: Viewport, is_current: bool) -> void:
-	view.size = Vector2(_viewport.size) * Vector2.ONE.lerp(Vector2(1.0, 0.5), half_res);
+	view.size = Vector2(_viewport.size)# * Vector2.ONE.lerp(Vector2(1.0, 0.5), half_res);
 #	view.msaa = _viewport.msaa
 #	view.hdr = _viewport.hdr
 	view.disable_3d = _viewport.disable_3d
@@ -91,7 +91,7 @@ func _update_camera_viewport_properties(view: Viewport, is_current: bool) -> voi
 
 
 func _update_camera_properties(camera: Camera3D) -> void:
-	var side := 1 if camera == _anaglyph_node("Right/Camera") else -1
+	var side := 1 if camera == _anaglyph_node("Right/Right/Camera") else -1
 	
 	camera.far = far
 	camera.near = near
@@ -112,5 +112,5 @@ func _update_camera_properties(camera: Camera3D) -> void:
 	camera.translate_object_local(Vector3.RIGHT * separation * side)
 
 
-func _anaglyph_node(path: NodePath) -> Node:
+func _anaglyph_node(path) -> Node:
 	return _anaglyph.get_node(path)

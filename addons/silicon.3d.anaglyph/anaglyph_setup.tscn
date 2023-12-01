@@ -34,10 +34,10 @@ void fragment() {
 }"
 
 [sub_resource type="ViewportTexture" id="2"]
-viewport_path = NodePath("Left")
+viewport_path = NodePath("Left/Left")
 
 [sub_resource type="ViewportTexture" id="3"]
-viewport_path = NodePath("Right")
+viewport_path = NodePath("Right/Right")
 
 [sub_resource type="ShaderMaterial" id="4"]
 resource_local_to_scene = true
@@ -49,16 +49,24 @@ shader_parameter/right_camera = SubResource("3")
 
 [node name="Anaglyph" type="Node3D"]
 
-[node name="Left" type="SubViewport" parent="."]
+[node name="Left" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Camera" type="Camera3D" parent="Left"]
+[node name="Left" type="SubViewport" parent="Left"]
+
+[node name="Camera" type="Camera3D" parent="Left/Left"]
 projection = 2
 current = true
 size = 0.1
 
-[node name="Right" type="SubViewport" parent="."]
+[node name="Right" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Camera" type="Camera3D" parent="Right"]
+[node name="Right" type="SubViewport" parent="Right"]
+
+[node name="Camera" type="Camera3D" parent="Right/Right"]
 projection = 2
 current = true
 size = 0.1
