@@ -73,11 +73,10 @@ func _physics_process(delta: float) -> void:
 
 
 
-
 func setState(mode):
 	match mode:
 		PERSPECTIVE:
-			print(ProjectSettings.get_setting("rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality"))
+			ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality", 5)
 			$PerspectiveCam.current = true
 			$ClickerOrthoCam.current = false
 			%OrthoCam.current = false
@@ -87,6 +86,8 @@ func setState(mode):
 			
 			$PerspectiveCam.fov = 179
 		ORTHO:
+			ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality", 2)
+			print(ProjectSettings.get_setting("rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality"))
 			$PerspectiveCam.current = false
 			$ClickerOrthoCam.current = true
 			%OrthoCam.current = true
